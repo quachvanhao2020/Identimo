@@ -1,0 +1,22 @@
+{
+    "name": "hao/identimo",
+    "authors": [
+        {
+            "name": "vanhaohero1998",
+            "email": "quachvanhao2020@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Identimo\\": "src/"
+        },
+        "files": ["src/functions.php"]
+    },
+    "require": {
+        "php": ">=5.3",
+        "hao/yphp": "dev-main"
+    },
+    "repositories": [
+        {"type": "vcs", "url": "https://github.com/quachvanhao2020/YPHP.git"}
+    ]
+}
