@@ -3,12 +3,12 @@ namespace Identimo;
 
 use YPHP\EntityFertility;
 
-class User extends EntityFertility{
+class User extends EntityFertility implements UserInterface{
+
     const EMAIL = "email";
     const PHONE = "phone";
     const USERNAME = "username";
     const PASSWORD = "password";
-    const NOTE = "note";
 
     public function __toArray() {
         return array_merge([
@@ -16,7 +16,6 @@ class User extends EntityFertility{
             self::PASSWORD => $this->getPassword(),
             self::EMAIL => $this->getEmail(),
             self::PHONE => $this->getPhone(),
-            self::NOTE => $this->getNote(),
         ],parent::__toArray());
     }
 
@@ -68,7 +67,7 @@ class User extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setEmail(string $email)
+    public function setEmail(string $email = null)
     {
         $this->email = $email;
 
@@ -92,7 +91,7 @@ class User extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setPhone(string $phone)
+    public function setPhone(string $phone = null)
     {
         $this->phone = $phone;
 
@@ -116,7 +115,7 @@ class User extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setUsername(string $username)
+    public function setUsername(string $username = null)
     {
         $this->username = $username;
 
@@ -140,34 +139,11 @@ class User extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setPassword(string $password)
+    public function setPassword(string $password = null)
     {
         $this->password = $password;
 
         return $this;
     }
 
-    /**
-     * Get the value of note
-     *
-     * @return  string
-     */ 
-    public function getNote()
-    {
-        return $this->note;
-    }
-
-    /**
-     * Set the value of note
-     *
-     * @param  string  $note
-     *
-     * @return  self
-     */ 
-    public function setNote(string $note)
-    {
-        $this->note = $note;
-
-        return $this;
-    }
 }

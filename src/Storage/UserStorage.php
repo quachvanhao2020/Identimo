@@ -31,7 +31,7 @@ class UserStorage extends ArrayObject{
             /**
      * Set the value of storage
      *
-     * @param  User[]  $storage
+     * @param  \Identimo\User[]  $storage
      *
      * @return  self
      */ 

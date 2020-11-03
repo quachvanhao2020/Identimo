@@ -31,7 +31,7 @@ class GhostStorage extends ArrayObject{
             /**
      * Set the value of storage
      *
-     * @param  Ghost[]  $storage
+     * @param  \Identimo\Ghost[]  $storage
      *
      * @return  self
      */ 

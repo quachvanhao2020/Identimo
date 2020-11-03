@@ -31,7 +31,7 @@ class StaffStorage extends ArrayObject{
             /**
      * Set the value of storage
      *
-     * @param  Staff[]  $storage
+     * @param  \Identimo\Staff[]  $storage
      *
      * @return  self
      */ 

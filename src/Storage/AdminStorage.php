@@ -31,7 +31,7 @@ class AdminStorage extends ArrayObject{
             /**
      * Set the value of storage
      *
-     * @param  Admin[]  $storage
+     * @param  \Identimo\Admin[]  $storage
      *
      * @return  self
      */ 
