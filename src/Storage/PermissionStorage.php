@@ -2,26 +2,26 @@
 namespace Identimo\Storage;
 
 use YPHP\ArrayObject;
-use Identimo\Storage\Iterator\AdminIterator;
-use Identimo\Admin;
+use Identimo\Storage\Iterator\PermissionIterator;
+use Identimo\Permission;
 
-class AdminStorage extends ArrayObject{
+class PermissionStorage extends ArrayObject{
 
         /**
      * Create a new iterator from an ArrayObject instance
      *
-     * @return AdminIterator
+     * @return PermissionIterator
      */
     public function getIterator()
     {
-        return new AdminIterator($this->storage);
+        return new PermissionIterator($this->storage);
     }
 
 
     /**
      * Get the value of storage
      *
-     * @return  Admin[]
+     * @return  Permission[]
      */ 
     public function getStorage()
     {
@@ -31,7 +31,7 @@ class AdminStorage extends ArrayObject{
             /**
      * Set the value of storage
      *
-     * @param  \Identimo\Admin[]  $storage
+     * @param  \Identimo\Permission[]  $storage
      *
      * @return  self
      */ 

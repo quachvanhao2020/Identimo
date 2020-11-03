@@ -1,5 +1,5 @@
 <?php
-namespace Societymo\Storage;
+namespace Identimo\Storage;
 
 use YPHP\ArrayObject;
 use Identimo\Storage\Iterator\StaffIterator;

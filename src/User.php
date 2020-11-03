@@ -2,6 +2,8 @@
 namespace Identimo;
 
 use YPHP\EntityFertility;
+use YPHP\Model\Media\Image;
+use Identimo\Storage\PermissionStorage;
 
 class User extends EntityFertility implements UserInterface{
 
@@ -9,6 +11,8 @@ class User extends EntityFertility implements UserInterface{
     const PHONE = "phone";
     const USERNAME = "username";
     const PASSWORD = "password";
+    const AVATAR = "avatar";
+    const PERMISSIONS = "permissions";
 
     public function __toArray() {
         return array_merge([
@@ -16,13 +20,11 @@ class User extends EntityFertility implements UserInterface{
             self::PASSWORD => $this->getPassword(),
             self::EMAIL => $this->getEmail(),
             self::PHONE => $this->getPhone(),
+            self::AVATAR => $this->getAvatar(),
+            self::PERMISSIONS => $this->getPermissions(),
         ],parent::__toArray());
     }
 
-        /**
-     * @var string
-     */
-    protected $note;
 
     /**
      * 
@@ -49,6 +51,19 @@ class User extends EntityFertility implements UserInterface{
      */
     protected $password;
 
+    /**
+     * 
+     *
+     * @var Image
+     */
+    protected $avatar;
+
+    /**
+     * 
+     *
+     * @var PermissionStorage
+     */
+    protected $permissions;
 
     /**
      * Get the value of email
@@ -146,4 +161,52 @@ class User extends EntityFertility implements UserInterface{
         return $this;
     }
 
+
+    /**
+     * Get the value of permissions
+     *
+     * @return  PermissionStorage
+     */ 
+    public function getPermissions()
+    {
+        return $this->permissions;
+    }
+
+    /**
+     * Set the value of permissions
+     *
+     * @param  PermissionStorage  $permissions
+     *
+     * @return  self
+     */ 
+    public function setPermissions(PermissionStorage $permissions = null)
+    {
+        $this->permissions = $permissions;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of avatar
+     *
+     * @return  Image
+     */ 
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Set the value of avatar
+     *
+     * @param  Image  $avatar
+     *
+     * @return  self
+     */ 
+    public function setAvatar(Image $avatar = null)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
 }

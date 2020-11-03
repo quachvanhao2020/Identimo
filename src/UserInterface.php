@@ -1,5 +1,7 @@
 <?php
 namespace Identimo;
+use YPHP\Model\Media\Image;
+use Identimo\Storage\PermissionStorage;
 
 interface UserInterface{
     /**
@@ -18,4 +20,14 @@ interface UserInterface{
      * @return string
      */
     function getPhone();
+
+                /**
+     * @return Image
+     */
+    function getAvatar();
+
+                /**
+     * @return PermissionStorage
+     */
+    function getPermissions();
 }
