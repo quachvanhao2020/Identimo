@@ -2,6 +2,8 @@
 namespace Identimo;
 use YPHP\Model\Media\Image;
 use Identimo\Storage\PermissionStorage;
+use Laminas\Permissions\Acl\Role\RoleInterface;
+use Laminas\Permissions\Rbac\RoleInterface as RbacRoleInterface;
 
 interface UserInterface{
     /**
@@ -30,4 +32,14 @@ interface UserInterface{
      * @return PermissionStorage
      */
     function getPermissions();
+
+                    /**
+     * @return RoleInterface
+     */
+    function getAclRole();
+
+                    /**
+     * @return RbacRoleInterface
+     */
+    function getRbacRole();
 }

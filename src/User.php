@@ -4,6 +4,8 @@ namespace Identimo;
 use YPHP\EntityFertility;
 use YPHP\Model\Media\Image;
 use Identimo\Storage\PermissionStorage;
+use Laminas\Permissions\Acl\Role\RoleInterface;
+use Laminas\Permissions\Rbac\RoleInterface as RbacRoleInterface;
 
 class User extends EntityFertility implements UserInterface{
 
@@ -13,6 +15,8 @@ class User extends EntityFertility implements UserInterface{
     const PASSWORD = "password";
     const AVATAR = "avatar";
     const PERMISSIONS = "permissions";
+    const ACLROLE = "aclRole";
+    const RBACROLE = "rbacRole";
 
     public function __toArray() {
         return array_merge([
@@ -22,6 +26,8 @@ class User extends EntityFertility implements UserInterface{
             self::PHONE => $this->getPhone(),
             self::AVATAR => $this->getAvatar(),
             self::PERMISSIONS => $this->getPermissions(),
+            self::ACLROLE => $this->getAclRole(),
+            self::RBACROLE => $this->getRbacRole(),
         ],parent::__toArray());
     }
 
@@ -64,6 +70,20 @@ class User extends EntityFertility implements UserInterface{
      * @var PermissionStorage
      */
     protected $permissions;
+
+    /**
+     * 
+     *
+     * @var RoleInterface
+     */
+    protected $aclRole;
+
+        /**
+     * 
+     *
+     * @var RbacRoleInterface
+     */
+    protected $rbacRole;
 
     /**
      * Get the value of email
@@ -206,6 +226,54 @@ class User extends EntityFertility implements UserInterface{
     public function setAvatar(Image $avatar = null)
     {
         $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of aclRole
+     *
+     * @return  RoleInterface
+     */ 
+    public function getAclRole()
+    {
+        return $this->aclRole;
+    }
+
+    /**
+     * Set the value of aclRole
+     *
+     * @param  RoleInterface  $aclRole
+     *
+     * @return  self
+     */ 
+    public function setAclRole(RoleInterface $aclRole)
+    {
+        $this->aclRole = $aclRole;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of rbacRole
+     *
+     * @return  RbacRoleInterface
+     */ 
+    public function getRbacRole()
+    {
+        return $this->rbacRole;
+    }
+
+    /**
+     * Set the value of rbacRole
+     *
+     * @param  RbacRoleInterface  $rbacRole
+     *
+     * @return  self
+     */ 
+    public function setRbacRole(RbacRoleInterface $rbacRole)
+    {
+        $this->rbacRole = $rbacRole;
 
         return $this;
     }
