@@ -1,13 +1,12 @@
 <?php
 namespace Identimo\Factory;
 
-use YPHP\ContainerFactoryInterface;
 use YPHP\FilterInputInterface;
 use YPHP\SortingInputInterface;
 use Identimo\Staff;
 use Identimo\UserFilter;
 
-abstract class BaseStaffFactory implements ContainerFactoryInterface{
+abstract class BaseStaffFactory extends BaseUserFactory{
 
         /**
      * Finds an entry of the container by its identifier and returns it.

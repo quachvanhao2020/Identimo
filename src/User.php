@@ -189,6 +189,7 @@ class User extends EntityFertility implements UserInterface{
      */ 
     public function getPermissions()
     {
+        if(!$this->permissions) $this->permissions = new PermissionStorage();
         return $this->permissions;
     }
 

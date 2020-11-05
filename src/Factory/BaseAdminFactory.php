@@ -7,7 +7,7 @@ use YPHP\SortingInputInterface;
 use Identimo\Admin;
 use Identimo\UserFilter;
 
-abstract class BaseAdminFactory implements ContainerFactoryInterface{
+abstract class BaseAdminFactory extends BaseStaffFactory{
 
         /**
      * Finds an entry of the container by its identifier and returns it.

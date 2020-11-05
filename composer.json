@@ -16,7 +16,8 @@
         "php": ">=5.3",
         "hao/yphp": "dev-main",
         "laminas/laminas-permissions-acl": "^2.7",
-        "laminas/laminas-permissions-rbac": "^3.0"
+        "laminas/laminas-permissions-rbac": "^3.0",
+        "laminas/laminas-authentication": "^2.7"
     },
     "repositories": [
         {"type": "vcs", "url": "https://github.com/quachvanhao2020/YPHP.git"}

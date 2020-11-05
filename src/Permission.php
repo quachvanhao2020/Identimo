@@ -1,7 +1,18 @@
 <?php
 namespace Identimo;
 
-class Permission{
+use YPHP\Entity;
+use YPHP\EntityFertility;
+
+class Permission extends EntityFertility{
+
+    const CODE = "code";
+
+    public function __toArray() {
+        return array_merge(parent::__toArray(),[
+            self::CODE => $this->getCode(),
+        ]);
+    }
     /**
      * @var string
      */

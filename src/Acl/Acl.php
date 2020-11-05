@@ -26,10 +26,10 @@ class Acl extends AclAcl{
 
     public function __construct()
     {
-        foreach (self::raiseResources() as $key => $value) {
+        foreach ($this->raiseResources() as $key => $value) {
             $this->addResource($value);
         }
-        foreach (self::raiseRole() as $key => $value) {
+        foreach ($this->raiseRole() as $key => $value) {
             $this->addRole($value);
         }
     }
@@ -40,7 +40,7 @@ class Acl extends AclAcl{
         }
     }
 
-    public static function raiseRole(){
+    public function raiseRole(){
         return [
             new Guest,
             new Staff,
@@ -48,7 +48,7 @@ class Acl extends AclAcl{
         ];
     }
 
-    public static function raiseResources(){
+    public function raiseResources(){
         return [
             new Resource\MANAGE_STAFF,
             new Resource\MANAGE_USERS,
