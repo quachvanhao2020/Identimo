@@ -3,6 +3,7 @@ namespace Identimo\Acl;
 
 use Laminas\Permissions\Acl\Acl as AclAcl;
 use Identimo\Acl\Resource;
+use Identimo\Acl\Role\Admin;
 use Identimo\Acl\Role\Guest;
 use Identimo\Acl\Role\Staff;
 use Identimo\Acl\Role\User;
@@ -44,7 +45,8 @@ class Acl extends AclAcl{
         return [
             new Guest,
             new Staff,
-            new User
+            new User,
+            new Admin,
         ];
     }
 
