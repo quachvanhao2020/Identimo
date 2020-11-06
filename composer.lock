@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/quachvanhao2020/YPHP.git",
-                "reference": "6c7126c3c78ec1d7207f63c3f356c8c63e94fc80"
+                "reference": "f67ba8ffe727b6a5fd5f7f3e519d1aec6603b8dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quachvanhao2020/YPHP/zipball/6c7126c3c78ec1d7207f63c3f356c8c63e94fc80",
-                "reference": "6c7126c3c78ec1d7207f63c3f356c8c63e94fc80",
+                "url": "https://api.github.com/repos/quachvanhao2020/YPHP/zipball/f67ba8ffe727b6a5fd5f7f3e519d1aec6603b8dd",
+                "reference": "f67ba8ffe727b6a5fd5f7f3e519d1aec6603b8dd",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
                 "source": "https://github.com/quachvanhao2020/YPHP/tree/main",
                 "issues": "https://github.com/quachvanhao2020/YPHP/issues"
             },
-            "time": "2020-11-03T08:48:51+00:00"
+            "time": "2020-11-06T02:50:39+00:00"
         },
         {
             "name": "laminas/laminas-authentication",

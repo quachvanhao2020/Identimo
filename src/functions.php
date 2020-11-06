@@ -1,2 +1,2 @@
 <?php
-
+use YPHP\EntityStatistical;

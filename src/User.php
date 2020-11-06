@@ -2,6 +2,7 @@
 namespace Identimo;
 
 use YPHP\EntityFertility;
+use YPHP\EntityLife;
 use YPHP\Model\Media\Image;
 use Identimo\Storage\PermissionStorage;
 use Laminas\Permissions\Acl\Role\RoleInterface;
@@ -248,7 +249,7 @@ class User extends EntityFertility implements UserInterface{
      *
      * @return  self
      */ 
-    public function setAclRole(RoleInterface $aclRole)
+    public function setAclRole(RoleInterface $aclRole = null)
     {
         $this->aclRole = $aclRole;
 
@@ -272,7 +273,7 @@ class User extends EntityFertility implements UserInterface{
      *
      * @return  self
      */ 
-    public function setRbacRole(RbacRoleInterface $rbacRole)
+    public function setRbacRole(RbacRoleInterface $rbacRole = null)
     {
         $this->rbacRole = $rbacRole;
 
