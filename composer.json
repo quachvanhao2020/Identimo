@@ -10,7 +10,10 @@
         "psr-4": {
             "Identimo\\": "src/"
         },
-        "files": ["src/functions.php"]
+        "files": [
+            "src/awake.php",
+            "src/functions.php"
+        ]
     },
     "require": {
         "php": ">=5.3",

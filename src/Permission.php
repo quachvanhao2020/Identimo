@@ -3,41 +3,59 @@ namespace Identimo;
 
 use YPHP\Entity;
 use YPHP\EntityFertility;
+use Identimo\Storage\PermissionStorage;
+use Identimo\Storage\PermissionCodeStorage;
 
 class Permission extends EntityFertility{
 
-    const CODE = "code";
-
-    public function __toArray() {
-        return array_merge(parent::__toArray(),[
-            self::CODE => $this->getCode(),
-        ]);
-    }
     /**
-     * @var string
+     * @var PermissionCodeStorage
      */
-    protected $code;
+    protected $codes;
 
-    /**
-     * Get the value of code
+        /**
+     * Get the value of parent
      *
-     * @return  string
+     * @return  Permission
      */ 
-    public function getCode()
+    public function getParent()
     {
-        return $this->code;
+        return $this->parent;
     }
 
     /**
-     * Set the value of code
+     * Get the value of childrens
      *
-     * @param  string  $code
+     * @return  PermissionStorage
+     */ 
+    public function getChildrens()
+    {
+        if(!$this->childrens) $this->childrens = new PermissionStorage();
+        return $this->childrens;
+    }
+
+    /**
+     * Get the value of codes
+     *
+     * @return  PermissionCodeStorage
+     */ 
+    public function getCodes()
+    {
+        if(!$this->codes) $this->codes = new PermissionCodeStorage();
+
+        return $this->codes;
+    }
+
+    /**
+     * Set the value of codes
+     *
+     * @param  PermissionCodeStorage  $codes
      *
      * @return  self
      */ 
-    public function setCode(string $code)
+    public function setCodes(?PermissionCodeStorage $codes)
     {
-        $this->code = $code;
+        $this->codes = $codes;
 
         return $this;
     }

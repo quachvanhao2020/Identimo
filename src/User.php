@@ -32,7 +32,6 @@ class User extends EntityFertility implements UserInterface{
         ],parent::__toArray());
     }
 
-
     /**
      * 
      *
@@ -93,6 +92,7 @@ class User extends EntityFertility implements UserInterface{
      */ 
     public function getEmail()
     {
+        if(!$this->email) $this->email = "";
         return $this->email;
     }
 
@@ -117,6 +117,7 @@ class User extends EntityFertility implements UserInterface{
      */ 
     public function getPhone()
     {
+        if(!$this->phone) $this->phone = "";
         return $this->phone;
     }
 
@@ -141,6 +142,7 @@ class User extends EntityFertility implements UserInterface{
      */ 
     public function getUsername()
     {
+        if(!$this->username) $this->username = "";
         return $this->username;
     }
 
@@ -165,6 +167,7 @@ class User extends EntityFertility implements UserInterface{
      */ 
     public function getPassword()
     {
+        if(!$this->password) $this->password = "";
         return $this->password;
     }
 
@@ -201,7 +204,7 @@ class User extends EntityFertility implements UserInterface{
      *
      * @return  self
      */ 
-    public function setPermissions(PermissionStorage $permissions = null)
+    public function setPermissions(?PermissionStorage $permissions)
     {
         $this->permissions = $permissions;
 
@@ -215,6 +218,7 @@ class User extends EntityFertility implements UserInterface{
      */ 
     public function getAvatar()
     {
+        if(!$this->avatar) $this->avatar = new Image();
         return $this->avatar;
     }
 
@@ -225,7 +229,7 @@ class User extends EntityFertility implements UserInterface{
      *
      * @return  self
      */ 
-    public function setAvatar(Image $avatar = null)
+    public function setAvatar(?Image $avatar)
     {
         $this->avatar = $avatar;
 

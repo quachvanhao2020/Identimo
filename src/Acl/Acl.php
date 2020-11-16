@@ -2,14 +2,13 @@
 namespace Identimo\Acl;
 
 use Laminas\Permissions\Acl\Acl as AclAcl;
-use Identimo\Acl\Resource;
-use Identimo\Acl\Role\Admin;
-use Identimo\Acl\Role\Guest;
-use Identimo\Acl\Role\Staff;
-use Identimo\Acl\Role\User;
 use Identimo\UserInterface;
 
 class Acl extends AclAcl{
+
+    public static $ROLES = [];
+
+    public static $RESOURCES = [];
 
     private static $instance = null;
 
@@ -27,35 +26,24 @@ class Acl extends AclAcl{
 
     public function __construct()
     {
-        foreach ($this->raiseResources() as $key => $value) {
+        $this->init();
+    }
+
+    public function init(){
+        foreach (self::$ROLES as $key => $value) {
             $this->addResource($value);
         }
-        foreach ($this->raiseRole() as $key => $value) {
+        foreach ($this::$RESOURCES as $key => $value) {
             $this->addRole($value);
         }
     }
 
     public function updateByUser(UserInterface $user){
         foreach ($user->getPermissions() as $value) {
-            $this->allow($user->getAclRole(), $value->getCode());
+            foreach ($value->getCodes() as $_key => $_value) {
+                $this->allow($user->getAclRole(), $_value->getCode());
+            }
         }
-    }
-
-    public function raiseRole(){
-        return [
-            new Guest,
-            new Staff,
-            new User,
-            new Admin,
-        ];
-    }
-
-    public function raiseResources(){
-        return [
-            new Resource\MANAGE_STAFF,
-            new Resource\MANAGE_USERS,
-            new Resource\MANAGE_GUEST,
-        ];
     }
 
 }
