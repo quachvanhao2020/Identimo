@@ -4,8 +4,9 @@ namespace Identimo\Storage;
 use YPHP\ArrayObject;
 use Identimo\Storage\Iterator\GhostIterator;
 use Identimo\Ghost;
+use YPHP\Storage\EntityStorage;
 
-class GhostStorage extends ArrayObject{
+class GhostStorage extends EntityStorage{
 
         /**
      * Create a new iterator from an ArrayObject instance

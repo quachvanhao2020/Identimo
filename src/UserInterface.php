@@ -18,27 +18,27 @@ interface UserInterface{
      * @return string
      */
     function getEmail();
-            /**
+    /**
      * @return string
      */
     function getPhone();
 
-                /**
+    /**
      * @return Image
      */
     function getAvatar();
 
-                /**
+    /**
      * @return Permission
      */
     function getPermission();
 
-                    /**
+    /**
      * @return RoleInterface
      */
     function getAclRole();
 
-                    /**
+    /**
      * @return RbacRoleInterface
      */
     function getRbacRole();

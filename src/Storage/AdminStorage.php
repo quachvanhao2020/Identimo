@@ -5,7 +5,7 @@ use YPHP\ArrayObject;
 use Identimo\Storage\Iterator\AdminIterator;
 use Identimo\Admin;
 
-class AdminStorage extends ArrayObject{
+class AdminStorage extends UserStorage{
 
         /**
      * Create a new iterator from an ArrayObject instance

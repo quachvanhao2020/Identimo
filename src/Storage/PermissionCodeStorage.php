@@ -1,11 +1,11 @@
 <?php
 namespace Identimo\Storage;
-
 use YPHP\ArrayObject;
 use Identimo\Storage\Iterator\PermissionCodeIterator;
 use Identimo\PermissionCode;
+use YPHP\Storage\EntityStorageInterface;
 
-class PermissionCodeStorage extends ArrayObject{
+class PermissionCodeStorage extends ArrayObject implements EntityStorageInterface{
 
         /**
      * Create a new iterator from an ArrayObject instance

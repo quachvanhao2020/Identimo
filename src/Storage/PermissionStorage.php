@@ -4,8 +4,9 @@ namespace Identimo\Storage;
 use YPHP\ArrayObject;
 use Identimo\Storage\Iterator\PermissionIterator;
 use Identimo\Permission;
+use YPHP\Storage\EntityStorageInterface;
 
-class PermissionStorage extends ArrayObject{
+class PermissionStorage extends ArrayObject implements EntityStorageInterface{ 
 
         /**
      * Create a new iterator from an ArrayObject instance

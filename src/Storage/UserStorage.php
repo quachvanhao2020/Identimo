@@ -4,8 +4,9 @@ namespace Identimo\Storage;
 use YPHP\ArrayObject;
 use Identimo\Storage\Iterator\UserIterator;
 use Identimo\User;
+use YPHP\Storage\EntityStorage;
 
-class UserStorage extends ArrayObject{
+class UserStorage extends EntityStorage{
 
         /**
      * Create a new iterator from an ArrayObject instance

@@ -5,7 +5,7 @@ use YPHP\ArrayObject;
 use Identimo\Storage\Iterator\StaffIterator;
 use Identimo\Staff;
 
-class StaffStorage extends ArrayObject{
+class StaffStorage extends UserStorage{
 
         /**
      * Create a new iterator from an ArrayObject instance
