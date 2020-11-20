@@ -31,19 +31,16 @@ class Acl extends AclAcl{
 
     public function init(){
         foreach (self::$ROLES as $key => $value) {
-            $this->addResource($value);
+            $this->addRole($value);
         }
         foreach ($this::$RESOURCES as $key => $value) {
-            $this->addRole($value);
+            $this->addResource($value);
         }
     }
 
     public function updateByUser(UserInterface $user){
-        foreach ($user->getPermissions() as $value) {
-            foreach ($value->getCodes() as $_key => $_value) {
-                $this->allow($user->getAclRole(), $_value->getCode());
-            }
+        foreach ($user->getPermission()->getCodes() as $key => $value) {
+            $this->allow($user->getAclRole(), $value->getCode());
         }
     }
-
 }

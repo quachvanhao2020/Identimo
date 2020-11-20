@@ -1,7 +1,7 @@
 <?php
 use Identimo\Acl\Acl;
 
-function permissionGuard($object,$method,$role = null){
+function PermissionGuard($object,$method,$role = null){
     $rc = new \ReflectionClass($object);
     $method = $rc->getMethod($method);
     $annotations = parseAnnotations($method);
@@ -20,7 +20,39 @@ function permissionGuard($object,$method,$role = null){
     }
     return true;
 }
-
+function PermissionGuardArray(array &$array,$role = null,bool $clear = false){
+    $acl = Acl::getInstance();
+    $allow = true;
+    $start = false;
+    $permissions = [];
+    foreach ($array as $key => &$value) {
+        if($key == PERMISSION_CAPTURE_START){
+            $start = true;
+            $permissions = $value;
+            unset($array[$key]);
+        }
+        if($key == PERMISSION_CAPTURE_END){
+            $start = false;
+            $allow = true;
+            unset($array[$key]);
+        }
+        if($start){
+            foreach ($permissions as $permission) {
+                if(!$acl->isAllowed($role,$permission)){
+                    $allow = false;
+                    break;
+                };
+            }
+        }
+        if(!$allow){
+            unset($array[$key]);
+            continue;
+        }
+        if(is_array($value)){
+            \PermissionGuardArray($value,$role);
+        }
+    }
+}
 if(\function_exists("parseAnnotations")){
     /**
     * Copied from PHPUnit 3.7.29, Util/Test.php

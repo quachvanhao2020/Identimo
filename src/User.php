@@ -7,15 +7,15 @@ use YPHP\Model\Media\Image;
 use Identimo\Storage\PermissionStorage;
 use Laminas\Permissions\Acl\Role\RoleInterface;
 use Laminas\Permissions\Rbac\RoleInterface as RbacRoleInterface;
+use Identimo\Permission;
 
 class User extends EntityFertility implements UserInterface{
-
     const EMAIL = "email";
     const PHONE = "phone";
     const USERNAME = "username";
     const PASSWORD = "password";
     const AVATAR = "avatar";
-    const PERMISSIONS = "permissions";
+    const PERMISSION = "permission";
     const ACLROLE = "aclRole";
     const RBACROLE = "rbacRole";
 
@@ -26,7 +26,7 @@ class User extends EntityFertility implements UserInterface{
             self::EMAIL => $this->getEmail(),
             self::PHONE => $this->getPhone(),
             self::AVATAR => $this->getAvatar(),
-            self::PERMISSIONS => $this->getPermissions(),
+            self::PERMISSION => $this->getPermission(),
             self::ACLROLE => $this->getAclRole(),
             self::RBACROLE => $this->getRbacRole(),
         ],parent::__toArray());
@@ -67,9 +67,9 @@ class User extends EntityFertility implements UserInterface{
     /**
      * 
      *
-     * @var PermissionStorage
+     * @var Permission
      */
-    protected $permissions;
+    protected $permission;
 
     /**
      * 
@@ -229,7 +229,7 @@ class User extends EntityFertility implements UserInterface{
      *
      * @return  self
      */ 
-    public function setAvatar(?Image $avatar)
+    public function setAvatar(Image $avatar = null)
     {
         $this->avatar = $avatar;
 
@@ -280,6 +280,31 @@ class User extends EntityFertility implements UserInterface{
     public function setRbacRole(RbacRoleInterface $rbacRole = null)
     {
         $this->rbacRole = $rbacRole;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of permission
+     *
+     * @return  Permission
+     */ 
+    public function getPermission()
+    {
+        if(!$this->permission) $this->permission = new Permission();
+        return $this->permission;
+    }
+
+    /**
+     * Set the value of permission
+     *
+     * @param  Permission  $permission
+     *
+     * @return  self
+     */ 
+    public function setPermission(Permission $permission = null)
+    {
+        $this->permission = $permission;
 
         return $this;
     }

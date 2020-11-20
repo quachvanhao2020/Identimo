@@ -1,9 +1,9 @@
 <?php
 namespace Identimo;
 use YPHP\Model\Media\Image;
-use Identimo\Storage\PermissionStorage;
 use Laminas\Permissions\Acl\Role\RoleInterface;
 use Laminas\Permissions\Rbac\RoleInterface as RbacRoleInterface;
+use Identimo\Permission;
 
 interface UserInterface{
     /**
@@ -29,9 +29,9 @@ interface UserInterface{
     function getAvatar();
 
                 /**
-     * @return PermissionStorage
+     * @return Permission
      */
-    function getPermissions();
+    function getPermission();
 
                     /**
      * @return RoleInterface

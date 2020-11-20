@@ -3,8 +3,8 @@ namespace Identimo\Acl\Resource;
 
 use Laminas\Permissions\Acl\Resource\GenericResource;
 
-class MANAGE_USERS extends GenericResource{
-    const __name = "MANAGE_USERS";
+class MANAGE_ADMIN extends GenericResource{
+    const __name = "MANAGE_ADMIN";
     /**
      * Sets the Resource identifier
      *

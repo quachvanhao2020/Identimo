@@ -20,6 +20,7 @@ class Permission extends EntityFertility{
      */ 
     public function getParent()
     {
+        if(!$this->parent) $this->parent = new Permission();
         return $this->parent;
     }
 
@@ -53,7 +54,7 @@ class Permission extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setCodes(?PermissionCodeStorage $codes)
+    public function setCodes(PermissionCodeStorage $codes = null)
     {
         $this->codes = $codes;
 
