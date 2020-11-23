@@ -8,6 +8,12 @@ use Identimo\Storage\PermissionCodeStorage;
 
 class Permission extends EntityFertility{
 
+    const CODES = "codes";
+    public function __toArray(){
+        return array_merge([
+            self::CODES => $this->getCodes(),
+        ],parent::__toArray());
+    }
     /**
      * @var PermissionCodeStorage
      */
