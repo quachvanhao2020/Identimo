@@ -4,6 +4,9 @@ use Identimo\Acl\Acl;
 use Identimo\Acl\Resource;
 use Identimo\Acl\Role\Guest;
 use Identimo\Acl\Role;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollectionx;
+
 if(!defined("PERMISSION_CAPTURE_START")){
     define("PERMISSION_CAPTURE_START","PERMISSION_CAPTURE_START");
 }
@@ -23,3 +26,5 @@ Acl::$RESOURCES += [
     new Resource\MANAGE_GUEST,
     new Resource\MANAGE_ADMIN,
 ]; 
+
+class_alias(Doctrine\Common\Collections\ArrayCollectionx::class,\Doctrine\Common\Collections\ArrayCollection::class);

@@ -1,8 +1,20 @@
 <?php
 namespace Identimo;
 use Laminas\Permissions\Acl\Role\RoleInterface;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity 
+ * @ORM\Table(name="staffs")
+ */
 class Staff extends User{
+
+        /**
+     * 
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    public $staff;
     /**
      * Get the value of aclRole
      *

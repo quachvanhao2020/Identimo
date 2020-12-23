@@ -1,23 +1,42 @@
 <?php
 namespace Identimo;
 
-use YPHP\Entity;
 use YPHP\EntityFertility;
 use Identimo\Storage\PermissionStorage;
 use Identimo\Storage\PermissionCodeStorage;
+use Doctrine\ORM\Mapping as ORM;
+use Identimo\PermissionCode;
 
+/**
+ * @ORM\Entity 
+ * @ORM\Table(name="permissions")
+ */
 class Permission extends EntityFertility{
-
     const CODES = "codes";
+
     public function __toArray(){
         return array_merge([
             self::CODES => $this->getCodes(),
         ],parent::__toArray());
     }
     /**
+     * @ORM\ManyToMany(targetEntity="PermissionCode",cascade={"persist"})
      * @var PermissionCodeStorage
      */
     protected $codes;
+
+        /**
+     * Many Categories have One Category.
+     * @ORM\ManyToOne(targetEntity="Identimo\Permission", inversedBy="children",cascade={"persist"})
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     */
+    protected $parent;
+
+    /**
+     * One Category has Many Categories.
+     * @ORM\OneToMany(targetEntity="Identimo\Permission", mappedBy="parent")
+     */
+    protected $children;
 
         /**
      * Get the value of parent
@@ -60,10 +79,15 @@ class Permission extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setCodes(PermissionCodeStorage $codes = null)
+    public function setCodes( $codes = null)
     {
         $this->codes = $codes;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->id;
     }
 }

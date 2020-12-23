@@ -1,15 +1,24 @@
 <?php
 namespace Identimo;
 
+use Doctrine\ORM\Mapping as ORM;
 use YPHP\EntityFertility;
-use YPHP\EntityLife;
 use YPHP\Model\Media\Image;
-use Identimo\Storage\PermissionStorage;
 use Laminas\Permissions\Acl\Role\RoleInterface;
 use Laminas\Permissions\Rbac\RoleInterface as RbacRoleInterface;
 use Identimo\Permission;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use YPHP\Entity;
+use Doctrine\ORM\Id\UuidGenerator;
+/**
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED") 
+ * /@ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"user" = "User", "admin" = "Admin","staff" = "Staff"})
+ * @ORM\Table(name="users")
+ */
 class User extends EntityFertility implements UserInterface{
+
     const EMAIL = "email";
     const PHONE = "phone";
     const USERNAME = "username";
@@ -32,55 +41,76 @@ class User extends EntityFertility implements UserInterface{
         ],parent::__toArray());
     }
 
+
+    /**
+     * Many Categories have One Category.
+     * @ORM\ManyToOne(targetEntity="Identimo\User", inversedBy="children",cascade={"persist"})
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     */
+    protected $parent;
+
+    /**
+     * One Category has Many Categories.
+     * @ORM\OneToMany(targetEntity="Identimo\User", mappedBy="parent")
+     */
+    protected $children;
+    
     /**
      * 
-     *
+     * @ORM\Column(type="string",nullable=true)
+     * /@Assert\Email
+     * /@Assert\NotEmpty
      * @var string
      */
     protected $email;
-            /**
+    
+    /**
      * 
-     *
+     * @ORM\Column(type="string",nullable=true,options={"unsigned":true, "default":"phone"})
      * @var string
      */
     protected $phone;
-            /**
+    
+    /**
      * 
-     *
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $username;
-            /**
+    
+    /**
      * 
-     *
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $password;
 
     /**
      * 
-     *
+     * @ORM\ManyToOne(targetEntity="YPHP\Model\Media\Image",cascade={"persist"})
      * @var Image
      */
     protected $avatar;
 
     /**
      * 
-     *
+     * @ORM\ManyToOne(targetEntity="Identimo\Permission",cascade={"persist"})
      * @var Permission
      */
     protected $permission;
 
     /**
      * 
-     *
+     * @ORM\ManyToOne(targetEntity="Identimo\Acl\AclRole")
+     * @ORM\JoinColumn(name="acl_role_id", referencedColumnName="roleId")
      * @var RoleInterface
      */
     protected $aclRole;
 
-        /**
+    /**
      * 
-     *
+     * @ORM\ManyToOne(targetEntity="Identimo\Rbac\RbacRole")
+     * @ORM\JoinColumn(name="rbac_role_id", referencedColumnName="name")
      * @var RbacRoleInterface
      */
     protected $rbacRole;
@@ -142,7 +172,7 @@ class User extends EntityFertility implements UserInterface{
      */ 
     public function getUsername()
     {
-        if(!$this->username) $this->username = "";
+        if(!$this->username) $this->username = "d";
         return $this->username;
     }
 
@@ -185,36 +215,10 @@ class User extends EntityFertility implements UserInterface{
         return $this;
     }
 
-
-    /**
-     * Get the value of permissions
-     *
-     * @return  PermissionStorage
-     */ 
-    public function getPermissions()
-    {
-        if(!$this->permissions) $this->permissions = new PermissionStorage();
-        return $this->permissions;
-    }
-
-    /**
-     * Set the value of permissions
-     *
-     * @param  PermissionStorage  $permissions
-     *
-     * @return  self
-     */ 
-    public function setPermissions(?PermissionStorage $permissions)
-    {
-        $this->permissions = $permissions;
-
-        return $this;
-    }
-
     /**
      * Get the value of avatar
      *
-     * @return  Image
+     * @return  YPHP\Model\Media\Image
      */ 
     public function getAvatar()
     {
@@ -291,7 +295,7 @@ class User extends EntityFertility implements UserInterface{
      */ 
     public function getPermission()
     {
-        if(!$this->permission) $this->permission = new Permission();
+        //if(!$this->permission) $this->permission = new Permission();
         return $this->permission;
     }
 
@@ -305,6 +309,26 @@ class User extends EntityFertility implements UserInterface{
     public function setPermission(Permission $permission = null)
     {
         $this->permission = $permission;
+
+        return $this;
+    }
+
+    /**
+     * Get one Category has Many Categories.
+     */ 
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set one Category has Many Categories.
+     *
+     * @return  self
+     */ 
+    public function setChildren($children)
+    {
+        $this->children = $children;
 
         return $this;
     }

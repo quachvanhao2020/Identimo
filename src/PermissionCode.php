@@ -1,8 +1,12 @@
 <?php
 namespace Identimo;
-use YPHP\Entity;
 use YPHP\EntityLife;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity 
+ * @ORM\Table(name="permission_codes")
+ */
 class PermissionCode extends EntityLife{
     const CODE = "code";
 
@@ -12,6 +16,7 @@ class PermissionCode extends EntityLife{
         ]);
     }
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $code;
@@ -23,7 +28,7 @@ class PermissionCode extends EntityLife{
      */ 
     public function getCode()
     {
-        if(!$this->code) $this->code = "";
+        if(!$this->code) $this->code = "d";
         return $this->code;
     }
 
