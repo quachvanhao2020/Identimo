@@ -1,4 +1,3 @@
 <?php
-require_once "bootstrap.php";
-return \Doctrine\ORM\Tools\Console\ConsoleRunner::createHelperSet($entityManager);
-
+use Identimo\Orm;
+return \Doctrine\ORM\Tools\Console\ConsoleRunner::createHelperSet(Orm::getEntityManager());

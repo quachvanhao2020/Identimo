@@ -19,6 +19,17 @@ class Permission extends EntityFertility{
             self::CODES => $this->getCodes(),
         ],parent::__toArray());
     }
+
+    /**
+     * 
+     * @ORM\Id
+     * @ORM\Column(type="string",name="id")
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Doctrine\ORM\Id\UuidGenerator")
+     * @var string
+     */
+    protected $id;
+    
     /**
      * @ORM\ManyToMany(targetEntity="PermissionCode",cascade={"persist"})
      * @var PermissionCodeStorage

@@ -15,6 +15,17 @@ class PermissionCode extends EntityLife{
             self::CODE => $this->getCode(),
         ]);
     }
+
+    /**
+     * 
+     * @ORM\Id
+     * @ORM\Column(type="string",name="id")
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Doctrine\ORM\Id\UuidGenerator")
+     * @var string
+     */
+    protected $id;
+
     /**
      * @ORM\Column(type="string")
      * @var string

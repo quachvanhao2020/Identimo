@@ -8,8 +8,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Identimo\\": "src/",
-            "Doctrine\\": "src/Doctrine"
+            "Identimo\\": "src/"
         },
         "files": [
             "src/awake.php",
@@ -21,9 +20,11 @@
         "hao/yphp": "dev-main",
         "laminas/laminas-permissions-acl": "^2.7",
         "laminas/laminas-permissions-rbac": "^3.0",
-        "laminas/laminas-authentication": "^2.7",
-        "doctrine/orm": "^2.8",
-        "symfony/validator": "^5.2"
+        "laminas/laminas-authentication": "^2.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9",
+        "doctrine/orm": "^2.8"
     },
     "repositories": [
         {"type": "vcs", "url": "https://github.com/quachvanhao2020/YPHP.git"}

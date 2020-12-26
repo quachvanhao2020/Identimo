@@ -7,9 +7,7 @@ use YPHP\Model\Media\Image;
 use Laminas\Permissions\Acl\Role\RoleInterface;
 use Laminas\Permissions\Rbac\RoleInterface as RbacRoleInterface;
 use Identimo\Permission;
-use Symfony\Component\Validator\Constraints as Assert;
-use YPHP\Entity;
-use Doctrine\ORM\Id\UuidGenerator;
+
 /**
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED") 
@@ -18,6 +16,16 @@ use Doctrine\ORM\Id\UuidGenerator;
  * @ORM\Table(name="users")
  */
 class User extends EntityFertility implements UserInterface{
+
+    /**
+     * 
+     * @ORM\Id
+     * @ORM\Column(type="string",name="id")
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Doctrine\ORM\Id\UuidGenerator")
+     * @var string
+     */
+    protected $id;
 
     const EMAIL = "email";
     const PHONE = "phone";
@@ -87,7 +95,7 @@ class User extends EntityFertility implements UserInterface{
 
     /**
      * 
-     * @ORM\ManyToOne(targetEntity="YPHP\Model\Media\Image",cascade={"persist"})
+     * \@ORM\ManyToOne(targetEntity="YPHP\Model\Media\Image",cascade={"persist"})
      * @var Image
      */
     protected $avatar;

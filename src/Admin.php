@@ -16,14 +16,13 @@ use YPHP\Model\Media\Image;
  * })
  * @ORM\Table(name="admins")
  */
+
+/**
+ * @ORM\Entity 
+ * @ORM\Table(name="admins")
+ */
 class Admin extends Staff{
 
-    /**
-     * 
-     * @ORM\Column(type="string",name="admin")
-     * @var string
-     */
-    public $admin;
     /**
      * Get the value of aclRole
      *

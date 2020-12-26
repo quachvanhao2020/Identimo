@@ -9,12 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Staff extends User{
 
-        /**
-     * 
-     * @ORM\Column(type="string")
-     * @var string
-     */
-    public $staff;
     /**
      * Get the value of aclRole
      *
