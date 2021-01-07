@@ -2,6 +2,7 @@
 namespace Identimo;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
+use \Doctrine\DBAL\Logging\EchoSQLLogger;
 
 class Orm{
     
@@ -18,6 +19,7 @@ class Orm{
     }
     public static function getEntityManager(){
         $config = Setup::createAnnotationMetadataConfiguration(Orm::getPaths(),true,null,null,false);
+        //$config->setSQLLogger(new EchoSQLLogger());
         $entityManager = EntityManager::create(Orm::getConnection(), $config);
         return $entityManager;
     }

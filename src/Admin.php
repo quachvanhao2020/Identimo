@@ -2,7 +2,6 @@
 namespace Identimo;
 use Laminas\Permissions\Acl\Role\RoleInterface;
 use Doctrine\ORM\Mapping as ORM;
-use YPHP\Model\Media\Image;
 
 /**
  * @ORM\Entity 
@@ -22,6 +21,13 @@ use YPHP\Model\Media\Image;
  * @ORM\Table(name="admins")
  */
 class Admin extends Staff{
+
+    /**
+     * 
+     * @ORM\Column(type="string",nullable=true,options={"unsigned":true, "default":"admin"})
+     * @var string
+     */
+    protected $admin;
 
     /**
      * Get the value of aclRole

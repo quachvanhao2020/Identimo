@@ -3,7 +3,7 @@ namespace Identimo;
 
 use Doctrine\ORM\Mapping as ORM;
 use YPHP\EntityFertility;
-use YPHP\Model\Media\Image;
+use YPHP\Model\Stream\Image;
 use Laminas\Permissions\Acl\Role\RoleInterface;
 use Laminas\Permissions\Rbac\RoleInterface as RbacRoleInterface;
 use Identimo\Permission;
@@ -11,6 +11,7 @@ use Identimo\Permission;
 /**
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED") 
+ * @ORM\InheritanceType("SINGLE_TABLE") 
  * /@ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"user" = "User", "admin" = "Admin","staff" = "Staff"})
  * @ORM\Table(name="users")
@@ -95,7 +96,7 @@ class User extends EntityFertility implements UserInterface{
 
     /**
      * 
-     * \@ORM\ManyToOne(targetEntity="YPHP\Model\Media\Image",cascade={"persist"})
+     * \@ORM\ManyToOne(targetEntity="YPHP\Model\Stream\Image",cascade={"persist"})
      * @var Image
      */
     protected $avatar;
@@ -226,7 +227,7 @@ class User extends EntityFertility implements UserInterface{
     /**
      * Get the value of avatar
      *
-     * @return  YPHP\Model\Media\Image
+     * @return  YPHP\Model\Stream\Image
      */ 
     public function getAvatar()
     {

@@ -48,7 +48,7 @@ final class OrmTest extends TestCase
     }
 
     public function tearDown(): void {
-        $this->app->run(new StringInput("orm:schema-tool:drop --full-database --force"));
+        //$this->app->run(new StringInput("orm:schema-tool:drop --full-database --force"));
     }
 
     public function testEmpty(): void
