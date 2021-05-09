@@ -36,7 +36,7 @@ class Permission extends EntityFertility{
      */
     protected $codes;
 
-        /**
+    /**
      * Many Categories have One Category.
      * @ORM\ManyToOne(targetEntity="Identimo\Permission", inversedBy="children",cascade={"persist"})
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
@@ -56,7 +56,7 @@ class Permission extends EntityFertility{
      */ 
     public function getParent()
     {
-        if(!$this->parent) $this->parent = new Permission();
+        //if(!$this->parent) $this->parent = new Permission();
         return $this->parent;
     }
 
@@ -79,7 +79,6 @@ class Permission extends EntityFertility{
     public function getCodes()
     {
         if(!$this->codes) $this->codes = new PermissionCodeStorage();
-
         return $this->codes;
     }
 
@@ -93,7 +92,6 @@ class Permission extends EntityFertility{
     public function setCodes( $codes = null)
     {
         $this->codes = $codes;
-
         return $this;
     }
 

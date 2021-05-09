@@ -6,7 +6,7 @@ use Identimo\Permission;
 use Identimo\Storage\PermissionStorage;
 
 
-class RestApiStreamFactory extends RestApiEntityFactory{
+class RestApiPermissionFactory extends RestApiEntityFactory{
     const ENTITY = Permission::class;
     const STORAGE = PermissionStorage::class;
     const ENDPOINT = "permissions";

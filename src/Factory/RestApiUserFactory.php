@@ -6,7 +6,7 @@ use Identimo\User;
 use Identimo\Storage\UserStorage;
 
 
-class RestApiStreamFactory extends RestApiEntityFactory{
+class RestApiUserFactory extends RestApiEntityFactory{
     const ENTITY = User::class;
     const STORAGE = UserStorage::class;
     const ENDPOINT = "users";
