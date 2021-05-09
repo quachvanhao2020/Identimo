@@ -36,5 +36,6 @@
         "development-enable": "laminas-development-mode enable",
         "development-status": "laminas-development-mode status"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable" : true
 }
