@@ -1,7 +1,6 @@
 <?php
 namespace Identimo\Storage;
 
-use YPHP\ArrayObject;
 use Identimo\Storage\Iterator\UserIterator;
 use Identimo\User;
 use YPHP\Storage\EntityStorage;

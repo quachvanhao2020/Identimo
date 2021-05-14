@@ -1,7 +1,6 @@
 <?php
 namespace Identimo\Storage;
 
-use YPHP\ArrayObject;
 use Identimo\Storage\Iterator\StaffIterator;
 use Identimo\Staff;
 
